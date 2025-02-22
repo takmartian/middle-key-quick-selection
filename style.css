@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.menu {
+    position: absolute;
+    display: none;
+    transform: translate(-50%, -50%);
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    opacity: 0; /* 初始状态为不可见 */
+}
+
+.circle.no-hover {
+    pointer-events: none; /* 禁用hover效果 */
+}
+
+.circle:hover {
+    background-color: #0056b3;
+}
+
+.circle.red {
+    background-color: red;
+}
+
+.fly-out {
+    animation: flyOut 0.2s forwards, fadeIn 0.2s forwards; /* 0.2s的飞出和逐渐显示动画 */
+}
+
+.fly-in {
+    animation: flyIn 0.2s forwards, fadeOut 0.2s forwards; /* 0.2s的飞入和逐渐隐藏动画 */
+}
+
+@keyframes flyOut {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(var(--tx), var(--ty)); }
+}
+
+@keyframes flyIn {
+    0% { transform: translate(var(--tx), var(--ty)); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.status {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+}
